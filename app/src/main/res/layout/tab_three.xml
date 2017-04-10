@@ -18,144 +18,145 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        android:text="Create an Account"
-        android:textSize="24sp"
-        android:layout_marginTop="16dp"
-        android:textColor="#0097A7"
-        android:gravity="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Headline"/>
-    <EditText
-    android:id="@+id/name"
-    android:layout_width="match_parent"
-    android:hint="Name"
-    android:layout_marginRight="8dp"
-        android:paddingLeft="16dp"
-    android:layout_marginLeft="8dp"
-        android:inputType="textPersonName"
-        android:paddingRight="8dp"
-    android:background="@drawable/text_field_design"
-    android:maxLines="1"
-    android:layout_marginTop="16dp"
-    android:layout_height="48dp" />
-    <EditText
-        android:id="@+id/email"
-        android:paddingLeft="16dp"
-        android:paddingRight="8dp"
-        android:layout_width="match_parent"
-        android:hint="Email"
-        android:layout_marginRight="8dp"
-        android:layout_marginLeft="8dp"
-        android:inputType="textEmailAddress"
-        android:background="@drawable/text_field_design"
-        android:maxLines="1"
-        android:layout_marginTop="16dp"
-
-        android:layout_height="48dp" />
-    <EditText
-        android:id="@+id/password"
-        android:paddingRight="8dp"
-        android:paddingLeft="16dp"
-        android:layout_width="match_parent"
-        android:hint="Password"
-        android:inputType="textWebPassword"
-        android:layout_marginRight="8dp"
-        android:layout_marginLeft="8dp"
-        android:background="@drawable/text_field_design"
-        android:maxLines="1"
-        android:layout_marginTop="16dp"
-        android:layout_height="48dp"
-        android:fontFamily="sans-serif"/>
-    <Button
-        android:id="@+id/sing_up"
-        android:text="Sign Up"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/custom_button"
-        android:textAllCaps="false"
-        android:textColor="#EBEDFF"
-        android:textSize="24sp" />
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical|center_horizontal"
-        android:layout_marginTop="24dp" >
-
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="1dp"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="24dp"
-            android:layout_toRightOf="@+id/orText"
-            android:background="#90A4AE" />
-
-        <TextView
-            android:id="@+id/orText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:text="OR"
-            android:textSize="24sp"
-            android:textColor="#455A64" />
-
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="1dp"
-            android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/orText"
-            android:background="#90A4AE"
-            android:layout_marginLeft="24dp"
-            android:layout_marginRight="16dp"/>
-    </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="16dp"
-        android:weightSum="1">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
 
-        <ImageButton
-            android:id="@+id/info"
-            android:layout_weight=".5"
-            android:layout_width="104dp"
+            android:text="Create an Account"
+            android:textSize="24sp"
+            android:layout_marginTop="16dp"
+            android:textColor="#0097A7"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"/>
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:hint="Name"
+            android:layout_marginRight="8dp"
+            android:paddingLeft="16dp"
+            android:layout_marginLeft="8dp"
+            android:inputType="textPersonName"
+            android:paddingRight="8dp"
+            android:background="@drawable/text_field_design"
+            android:maxLines="1"
+            android:layout_marginTop="16dp"
+            android:layout_height="48dp" />
+        <EditText
+            android:id="@+id/email"
+            android:paddingLeft="16dp"
+            android:paddingRight="8dp"
+            android:layout_width="match_parent"
+            android:hint="Email"
+            android:layout_marginRight="8dp"
+            android:layout_marginLeft="8dp"
+            android:inputType="textEmailAddress"
+            android:background="@drawable/text_field_design"
+            android:maxLines="1"
+            android:layout_marginTop="16dp"
+
+            android:layout_height="48dp" />
+        <EditText
+            android:id="@+id/password"
+            android:paddingRight="8dp"
+            android:paddingLeft="16dp"
+            android:layout_width="match_parent"
+            android:hint="Password"
+            android:inputType="textWebPassword"
+            android:layout_marginRight="8dp"
+            android:layout_marginLeft="8dp"
+            android:background="@drawable/text_field_design"
+            android:maxLines="1"
+            android:layout_marginTop="16dp"
+            android:layout_height="48dp"
+            android:fontFamily="sans-serif"/>
+        <Button
+
+            android:id="@+id/sing_up"
+            android:text="Sign Up"
+            android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginLeft="16dp"
-            android:layout_marginRight="8dp"
-            android:paddingBottom="4dp"
-
-            android:paddingRight="8dp"
-            android:background="@drawable/fb_singup_button"
-            android:src="@drawable/ic_fb"
-            android:textAllCaps="false"
-            android:textColor="#283593"
-             />
-
-        <ImageButton
-            android:id="@+id/tw"
-            android:layout_width="104dp"
-            android:layout_height="48dp"
-            android:layout_marginLeft="8dp"
             android:layout_marginRight="16dp"
-
-            android:layout_weight="0.5"
-            android:background="@drawable/twitter_sign_up_button"
-            android:src="@drawable/ic_twitter"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/custom_button"
             android:textAllCaps="false"
-            android:textColor="#283593"
-             />
+            android:textColor="#EBEDFF"
+            style="?android:attr/borderlessButtonStyle"
+
+            android:textSize="24sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_marginTop="24dp" >
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="24dp"
+                android:layout_toRightOf="@+id/orText"
+                android:background="#90A4AE" />
+
+            <TextView
+                android:id="@+id/orText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:text="OR"
+                android:textSize="24sp"
+                android:textColor="#455A64" />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/orText"
+                android:background="#90A4AE"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="16dp"/>
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp"
+            android:weightSum="1">
+
+            <ImageButton
+                android:id="@+id/info"
+                android:layout_weight=".5"
+                android:layout_width="104dp"
+                android:layout_height="48dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="8dp"
+                android:paddingBottom="4dp"
+                android:paddingRight="8dp"
+                android:background="@drawable/fb_singup_button"
+                android:src="@drawable/ic_fb"
+                android:textAllCaps="false"
+                android:textColor="#283593"
+                />
+
+            <ImageButton
+                android:id="@+id/tw"
+                android:layout_width="104dp"
+                android:layout_height="48dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="16dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/twitter_sign_up_button"
+                android:src="@drawable/ic_twitter"
+                android:textAllCaps="false"
+                android:textColor="#283593"
+                />
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
 </ScrollView>
