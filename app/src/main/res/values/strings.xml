@@ -3,4 +3,15 @@
     <string name="tab_one">Home</string>
     <string name="tab_two">News</string>
     <string name="tab_three">Profile</string>
+    <string-array name="category_array">
+        <item>All</item>
+        <item>Education</item>
+        <item>Physical Health</item>
+        <item>Mental Health</item>
+        <item>Poverty</item>
+        <item>Children</item>
+        <item>Women</item>
+        <item>Clothes</item>
+        <item>Shelter</item>
+    </string-array>
 </resources>
