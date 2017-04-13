@@ -1,11 +1,19 @@
 package com.example.hp.heartful;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.util.AttributeSet;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+
+import static android.R.attr.width;
 
 /**
  * Created by HP INDIA on 08-Apr-17.
@@ -13,42 +21,22 @@ import android.widget.ImageButton;
 
 public class FragmentThree extends Fragment {
 
-    short number = 1;
     @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
-        final View view_popup = inflater.inflate(R.layout.fragment_login_popup, container, false);
-        final View view_signup = inflater.inflate(R.layout.tab_three, container, false);
 
-        ImageButton cross = (ImageButton) view_popup.findViewById(R.id.cross);
-        cross.setOnClickListener(new View.OnClickListener(){
+        return inflater.inflate(R.layout.tab_three, container, false);
 
-            @Override
-            public void onClick(View v){
-                number = 0;
-            }
-        });
-
-        if(number == 1)
-            return view_popup;
-        else
-            return view_signup;
     }
 
-    //    public void onClick(View view) {
 
-//        Fragment fragment2 = new Fragment();
-//        FragmentManager fragmentManager = getFragmentManager();
-//        FragmentTransaction fragmentTransaction =        fragmentManager.beginTransaction();
-//        fragmentTransaction.replace(R.id. );
-//        fragmentTransaction.addToBackStack(null);
-//        fragmentTransaction.commit();
-//    }
+    @Override
+    public void setMenuVisibility(final boolean visible) {
+        if (visible) {
+            FragmentManager fm = getFragmentManager();
+            login_dialogbox dialogFragment = new login_dialogbox ();
+            dialogFragment.show(fm,"LoginPopup");
+        }
 
-//    final ImageButton button = (ImageButton) findViewById(R.id.cross);
-//         button.setOnClickListener(new View.OnClickListener() {
-//        public void onClick(View v) {
-//            // Perform action on click
-//        }
-//    });
-
+        super.setMenuVisibility(visible);
+    }
 }
