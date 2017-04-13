@@ -6,19 +6,22 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="HeartFul"
-
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SplashScreen" android:theme="@style/SplashTheme.Theme" android:screenOrientation="portrait">
-
+        <activity
+            android:name=".SplashScreen"
+            android:screenOrientation="portrait"
+            android:theme="@style/SplashTheme.Theme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-        <activity android:name=".Home" android:theme="@style/AppTheme"></activity>
+        <activity
+            android:name=".Home"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".SearchButtonActivity"></activity>
     </application>
 
 </manifest>
