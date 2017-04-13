@@ -33,4 +33,5 @@ public class Home extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
     }
 
+
 }

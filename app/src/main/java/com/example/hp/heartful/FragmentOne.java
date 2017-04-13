@@ -1,6 +1,8 @@
 package com.example.hp.heartful;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
@@ -28,6 +30,15 @@ public class FragmentOne extends Fragment {
 
         View rootView = inflater.inflate(R.layout.home_list, container, false);
         super.onCreate(savedInstanceState);
+        // Setup FAB to open EditorActivity
+        FloatingActionButton fab = (FloatingActionButton)rootView.findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), SearchButtonActivity.class);
+                startActivity(intent);
+            }
+        });
         Spinner spinner = (Spinner) rootView.findViewById(R.id.category_spinner);
 // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> spinadapter = ArrayAdapter.createFromResource(getActivity(),
@@ -62,6 +73,5 @@ public class FragmentOne extends Fragment {
 
         return rootView;
     }
-
 
 }
