@@ -32,8 +32,8 @@
         android:text="You are currently not signed in!"/>
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_gravity="center_horizontal"
                 android:src="@drawable/heart"/>
 
@@ -42,7 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_height="wrap_content"
-        android:text="Having an account enables you to do things such as:"/>
+        android:text="Having an account enables you to:"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
