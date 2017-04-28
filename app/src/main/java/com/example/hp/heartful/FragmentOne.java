@@ -53,7 +53,7 @@ public class FragmentOne extends Fragment {
         Organisations.add(new OrgInfo("Sada Suhaagan Raho", "test info", R.drawable.heart));
         Organisations.add(new OrgInfo("NGO with a really big name", "but an average info length", R.drawable.heart));
         Organisations.add(new OrgInfo("WHO", "are you?", R.drawable.heart));
-        Organisations.add(new OrgInfo("big daddy", "small daddy", R.drawable.heart));
+        Organisations.add(new OrgInfo("aaaaaaaaaaabbbbbbbbbbbccccccccccccc", "aaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbccccccccccccaaaaaaaaaaaacccccccccc", R.drawable.heart));
         Organisations.add(new OrgInfo("chhota naam", "but info itni bdi ki chhote devices mein info view ke baahar chle jaae and last mein teen chhote dots dikhein haha", R.drawable.heart));
         Organisations.add(new OrgInfo("Jaago Graahak Jaago", "Apne Adhikaar ko Jaano, Apne Hakk ko Pehchano. Jaago, Graahak Jaago!", R.drawable.heart));
         Organisations.add(new OrgInfo("Satyamev Jayate", "Saccha hai pyaar tera!", R.drawable.heart));

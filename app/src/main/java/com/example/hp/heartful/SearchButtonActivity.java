@@ -2,6 +2,7 @@ package com.example.hp.heartful;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ListView;
 
 public class SearchButtonActivity extends AppCompatActivity {
 
@@ -10,4 +11,6 @@ public class SearchButtonActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_button);
     }
+
+        static ListView radioLV;
 }
