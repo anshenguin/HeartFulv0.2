@@ -17,13 +17,15 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:fb="http://schemas.android.com/apk/res-auto"
     android:paddingBottom="8dp"
     android:clipToPadding="false"
     android:fillViewport="true">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:weightSum="1">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -76,7 +78,6 @@
             android:layout_height="48dp"
             android:fontFamily="sans-serif"/>
         <Button
-
             android:id="@+id/sing_up"
             android:text="Sign Up"
             android:layout_width="match_parent"
@@ -87,10 +88,7 @@
             android:background="@drawable/custom_button"
             android:textAllCaps="false"
             android:textColor="#FFF8E1"
-            style="?android:attr/borderlessButtonStyle"
-
             android:textSize="24sp" />
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -130,34 +128,31 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="16dp"
-            android:weightSum="1">
-
-            <ImageButton
-                android:id="@+id/info"
-                android:layout_weight=".5"
+            android:weightSum="1"
+            android:layout_weight="0.09">
+            <com.facebook.login.widget.LoginButton
+                android:id="@+id/login_button"
+                android:layout_weight="0.5"
                 android:layout_width="104dp"
                 android:layout_height="48dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="8dp"
+                style="@style/FacebookLoginButton"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="16dp"
                 android:paddingBottom="4dp"
                 android:paddingRight="8dp"
-                android:background="@drawable/fb_singup_button"
-                android:src="@drawable/ic_fb"
-                android:textAllCaps="false"
                 android:textColor="#283593"
                 />
-
-            <ImageButton
-                android:id="@+id/tw"
+            <com.twitter.sdk.android.core.identity.TwitterLoginButton
+                android:id="@+id/twitter_login"
                 android:layout_width="104dp"
-                android:layout_height="48dp"
+                android:layout_height="32dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="16dp"
                 android:layout_weight="0.5"
                 android:background="@drawable/twitter_sign_up_button"
-                android:src="@drawable/ic_twitter"
                 android:textAllCaps="false"
-                android:textColor="#283593"
+                style="@style/TwitterLoginButton"
+                android:textColor="#1da1f2"
                 />
         </LinearLayout>
     </LinearLayout>

@@ -1,17 +1,13 @@
 package com.example.hp.heartful;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.support.v4.app.DialogFragment;
 
 import java.util.ArrayList;
 
@@ -19,26 +15,17 @@ import java.util.ArrayList;
  * Created by HP INDIA on 08-Apr-17.
  */
 
-public class FragmentOne extends Fragment {
-    public FragmentOne(){
+public  class FragmentOne extends Fragment  {
+    public FragmentOne() {
 
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         View rootView = inflater.inflate(R.layout.home_list, container, false);
         super.onCreate(savedInstanceState);
-        // Setup FAB to open EditorActivity
-        FloatingActionButton fab = (FloatingActionButton)rootView.findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), SearchButtonActivity.class);
-                startActivity(intent);
-            }
-        });
+
+
         Spinner spinner = (Spinner) rootView.findViewById(R.id.category_spinner);
 // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> spinadapter = ArrayAdapter.createFromResource(getActivity(),
@@ -60,11 +47,10 @@ public class FragmentOne extends Fragment {
 
         // Create an {@link WordAdapter}, whose data source is a list of {@link Word}s. The
         // adapter knows how to create list items for each item in the list.
-        OrgInfoAdapter adapter = new OrgInfoAdapter(getActivity(), Organisations);
 
         // Find the {@link ListView} object in the view hierarchy of the {@link Activity}.
         // There should be a {@link ListView} with the view ID called list, which is declared in the
-        // word_list.xml layout file.
+      OrgInfoAdapter adapter = new OrgInfoAdapter(getActivity(), Organisations);
         ListView listView = (ListView) rootView.findViewById(R.id.list);
 
         // Make the {@link ListView} use the {@link WordAdapter} we created above, so that the
@@ -74,4 +60,7 @@ public class FragmentOne extends Fragment {
         return rootView;
     }
 
+
+
 }
+

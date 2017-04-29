@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * Created by HP INDIA on 10-Apr-17.
@@ -16,13 +17,16 @@ import java.util.ArrayList;
 
 public class OrgInfoAdapter extends ArrayAdapter {
 
+
     public OrgInfoAdapter(Context context, ArrayList<OrgInfo> Organisations) {
         super(context, 0, Organisations);
 
     }
 
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+
         // Check if an existing view is being reused, otherwise inflate the view
         View listItemView = convertView;
         if (listItemView == null) {
@@ -37,13 +41,11 @@ public class OrgInfoAdapter extends ArrayAdapter {
         // Get the Miwok translation from the currentWord object and set this text on
         // the Miwok TextView.
         orgName.setText(currentOrg.getOrgname());
-
         // Find the TextView in the list_item.xml layout with the ID default_text_view.
         TextView orgInfo = (TextView) listItemView.findViewById(R.id.org_about);
         // Get the default translation from the currentWord object and set this text on
         // the default TextView.
         orgInfo.setText(currentOrg.getOrginfo());
-
         // Find the ImageView in the list_item.xml layout with the ID image.
         ImageView imageView = (ImageView) listItemView.findViewById(R.id.org_logo);
         // Check if an image is provided for this word or not
@@ -56,9 +58,15 @@ public class OrgInfoAdapter extends ArrayAdapter {
             // Otherwise hide the ImageView (set visibility to GONE)
             imageView.setVisibility(View.GONE);
         }
-
         // Return the whole list item layout (containing 2 TextViews) so that it can be shown in
         // the ListView.
         return listItemView;
+    }
+
+    public void filter(String searchItem) {
+        ArrayList<OrgInfo> Organisations = new ArrayList<OrgInfo>();
+        searchItem = searchItem.toLowerCase(Locale.getDefault());
+
+
     }
 }

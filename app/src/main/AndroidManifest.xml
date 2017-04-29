@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.hp.heartful">
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -8,6 +9,7 @@
         android:label="HeartFul"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
         <activity
             android:name=".SplashScreen"
             android:screenOrientation="portrait"
@@ -17,11 +19,19 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="@string/facebook_app_id" />
+            </intent-filter>
         </activity>
         <activity
-            android:name=".Home"
-            android:theme="@style/AppTheme" />
-        <activity android:name=".SearchButtonActivity"></activity>
+    android:name=".Home"
+    android:theme="@style/AppTheme" />
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="1266d58eaf01b4c9d7b2d4aa80edb371dd9cdd84" />
     </application>
 
-</manifest>
+    </manifest>
