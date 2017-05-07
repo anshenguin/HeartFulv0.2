@@ -18,6 +18,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:fb="http://schemas.android.com/apk/res-auto"
+    xmlns:facebook="http://schemas.android.com/tools"
     android:paddingBottom="8dp"
     android:clipToPadding="false"
     android:fillViewport="true">
@@ -29,7 +30,6 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:text="Create an Account"
             android:textSize="24sp"
             android:layout_marginTop="16dp"
@@ -37,7 +37,7 @@
             android:gravity="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline"/>
         <EditText
-            android:id="@+id/name"
+            android:id="@+id/User_name"
             android:layout_width="match_parent"
             android:hint="Name"
             android:layout_marginRight="8dp"
@@ -50,7 +50,7 @@
             android:layout_marginTop="16dp"
             android:layout_height="48dp" />
         <EditText
-            android:id="@+id/email"
+            android:id="@+id/email_id"
             android:paddingLeft="16dp"
             android:paddingRight="8dp"
             android:layout_width="match_parent"
@@ -89,6 +89,17 @@
             android:textAllCaps="false"
             android:textColor="#FFF8E1"
             android:textSize="24sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:id="@+id/login_text"
+            android:layout_height="wrap_content"
+            android:text="Already have Account? Login here"
+            android:textSize="16sp"
+            android:layout_marginTop="16dp"
+            android:textColor="#0097A7"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"/>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -128,31 +139,23 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="16dp"
-            android:weightSum="1"
-            android:layout_weight="0.09">
+            >
             <com.facebook.login.widget.LoginButton
                 android:id="@+id/login_button"
                 android:layout_weight="0.5"
                 android:layout_width="104dp"
-                android:layout_height="48dp"
-                style="@style/FacebookLoginButton"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="16dp"
-                android:paddingBottom="4dp"
-                android:paddingRight="8dp"
-                android:textColor="#283593"
+               android:layout_marginRight="8dp"
+                android:layout_marginLeft="16dp"
+                facebook:login_text=" "
+                android:layout_height="16dp"
                 />
             <com.twitter.sdk.android.core.identity.TwitterLoginButton
                 android:id="@+id/twitter_login"
-                android:layout_width="104dp"
-                android:layout_height="32dp"
-                android:layout_marginLeft="8dp"
                 android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_width="104dp"
+                android:layout_height="27dp"
                 android:layout_weight="0.5"
-                android:background="@drawable/twitter_sign_up_button"
-                android:textAllCaps="false"
-                style="@style/TwitterLoginButton"
-                android:textColor="#1da1f2"
                 />
         </LinearLayout>
     </LinearLayout>

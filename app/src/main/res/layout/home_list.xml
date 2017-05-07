@@ -10,58 +10,42 @@
     android:orientation="vertical"
     android:weightSum="4"
     android:background="#f3faff"
-<<<<<<< HEAD
     android:layout_alignParentTop="true"
     android:layout_alignParentLeft="true"
     android:layout_alignParentStart="true">
-    <Spinner
-        android:id="@+id/category_spinner"
-        android:layout_marginTop="16dp"
-        android:layout_height="36dp"
-        android:layout_width="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="4dp"
-        android:padding="4dp"
-        android:layout_marginBottom="8dp"
-        android:theme="@android:style/Theme.Holo.Light"
-        />
-=======
-    >
     <LinearLayout
         android:layout_width="match_parent"
-        android:weightSum="2"
+        android:weightSum="1"
         android:orientation="horizontal"
         android:layout_height="wrap_content">
-
         <Spinner
             android:id="@+id/category_spinner"
-            android:layout_width="match_parent"
+            android:layout_width="24dp"
             android:layout_height="32dp"
             android:layout_marginBottom="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="4dp"
-            android:layout_marginTop="16dp"
-            android:layout_weight="1"
+            android:layout_marginTop="22dp"
+            android:layout_weight="0.3"
             android:padding="4dp"
             android:theme="@android:style/Theme.Holo.Light" />
 
         <EditText
-
-            android:layout_marginLeft="8dp"
-
-            android:inputType="none"
-            android:textSize="16sp"
-            android:layout_width="match_parent"
-            android:layout_marginBottom="8dp"
+            android:layout_height="32dp"
+            android:layout_width="27dp"
             android:hint="Search..."
-            android:theme="@android:style/Theme.Holo.Light"
-            android:layout_marginRight="4dp"
-            android:layout_weight="1"
+            android:layout_marginRight="8dp"
+            android:paddingLeft="16dp"
+            android:layout_marginLeft="8dp"
+            android:inputType="textPersonName"
+            android:paddingRight="8dp"
+            android:background="@drawable/text_field_design"
+            android:maxLines="1"
+            android:layout_weight="0.7"
             android:layout_marginTop="16dp"
-            android:layout_height="32dp" />
+            android:id="@+id/search_item"
+             />
     </LinearLayout>
-
->>>>>>> origin/master
     <ListView
         android:id="@+id/list"
         android:orientation="vertical"
@@ -71,7 +55,6 @@
         android:paddingBottom="80dp"
         android:clipToPadding="false"
         android:scrollbars="none"
-
         android:divider="@android:color/transparent"
         android:dividerHeight="8.0sp"
         android:layout_height="match_parent"
