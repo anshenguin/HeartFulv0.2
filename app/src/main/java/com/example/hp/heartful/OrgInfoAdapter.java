@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 /**
@@ -16,15 +17,22 @@ import java.util.Locale;
  */
 
 public class OrgInfoAdapter extends ArrayAdapter {
+    Context mContext;
+    LayoutInflater inflater;
+    private List<OrgInfo> searchLists = null;
+    private ArrayList<OrgInfo> Organisations;
 
-
-    public OrgInfoAdapter(Context context, ArrayList<OrgInfo> Organisations) {
-        super(context, 0, Organisations);
-
+    public OrgInfoAdapter(Context context, ArrayList<OrgInfo> worldpopulationlist) {
+        super(context, 0, worldpopulationlist);
+        mContext = context;
+        this.searchLists = worldpopulationlist;
+        inflater = LayoutInflater.from(mContext);
+        this.Organisations = new ArrayList<OrgInfo>();
+        this.Organisations.addAll(worldpopulationlist);
     }
 
 
-    @Override
+
     public View getView(int position, View convertView, ViewGroup parent) {
 
         // Check if an existing view is being reused, otherwise inflate the view
@@ -63,10 +71,23 @@ public class OrgInfoAdapter extends ArrayAdapter {
         return listItemView;
     }
 
-    public void filter(String searchItem) {
-        ArrayList<OrgInfo> Organisations = new ArrayList<OrgInfo>();
-        searchItem = searchItem.toLowerCase(Locale.getDefault());
-
-
+    // Filter Class
+    public void filter(String charText) {
+        charText = charText.toLowerCase(Locale.getDefault());
+        searchLists.clear();
+        if (charText.length() == 0) {
+            searchLists.addAll(Organisations);
+        }
+        else
+        {
+            for (OrgInfo wp : Organisations)
+            {
+                if (wp.getOrginfo().toLowerCase(Locale.getDefault()).contains(charText))
+                {
+                    searchLists.add(wp);
+                }
+            }
+        }
+        notifyDataSetChanged();
     }
 }

@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1040918374423",
+    "firebase_url": "https://heartful-992c8.firebaseio.com",
+    "project_id": "heartful-992c8",
+    "storage_bucket": "heartful-992c8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1040918374423:android:5acfd1cee0f1c8ab",
+        "android_client_info": {
+          "package_name": "com.example.hp.heartful"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1040918374423-kvtpgu8mv41ore4ocn8b2mvu3m9am954.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hp.heartful",
+            "certificate_hash": "7daf1035228a38e0be6139d16460df331ac6e609"
+          }
+        },
+        {
+          "client_id": "1040918374423-ialjjj0g9qkrvbd6f59es79v474j85qp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC69vckuqOMI_58CB2C60hnXd-DFt5L97I"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1040918374423-ialjjj0g9qkrvbd6f59es79v474j85qp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -71,7 +71,4 @@ public class OrgInfo {
     public boolean hasImage() {
         return mImageResourceId != NO_IMAGE_PROVIDED;
     }
-
-    public void filter(String text) {
-    }
 }

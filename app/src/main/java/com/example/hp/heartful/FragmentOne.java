@@ -2,14 +2,18 @@ package com.example.hp.heartful;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * Created by HP INDIA on 08-Apr-17.
@@ -22,10 +26,8 @@ public  class FragmentOne extends Fragment  {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.home_list, container, false);
+        final View rootView = inflater.inflate(R.layout.home_list, container, false);
         super.onCreate(savedInstanceState);
-
-
         Spinner spinner = (Spinner) rootView.findViewById(R.id.category_spinner);
 // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> spinadapter = ArrayAdapter.createFromResource(getActivity(),
@@ -50,17 +52,39 @@ public  class FragmentOne extends Fragment  {
 
         // Find the {@link ListView} object in the view hierarchy of the {@link Activity}.
         // There should be a {@link ListView} with the view ID called list, which is declared in the
-      OrgInfoAdapter adapter = new OrgInfoAdapter(getActivity(), Organisations);
-        ListView listView = (ListView) rootView.findViewById(R.id.list);
+         final OrgInfoAdapter adapter = new OrgInfoAdapter(getActivity(), Organisations);
+        final ListView listView = (ListView) rootView.findViewById(R.id.list);
 
         // Make the {@link ListView} use the {@link WordAdapter} we created above, so that the
         // {@link ListView} will display list items for each {@link Word} in the list.
         listView.setAdapter(adapter);
+       final   EditText searchItem= (EditText)rootView. findViewById(R.id.search_item);
 
+        // Capture Text in EditText
+        searchItem.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void afterTextChanged(Editable arg0) {
+                // TODO Auto-generated method stub
+                String text = searchItem.getText().toString().toLowerCase(Locale.getDefault());
+                adapter.filter(text);
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence arg0, int arg1,
+                                          int arg2, int arg3) {
+                // TODO Auto-generated method stub
+            }
+
+            @Override
+            public void onTextChanged(CharSequence arg0, int arg1, int arg2,
+                                      int arg3) {
+                // TODO Auto-generated method stub
+            }
+        });
         return rootView;
+    }
     }
 
 
-
-}
 
