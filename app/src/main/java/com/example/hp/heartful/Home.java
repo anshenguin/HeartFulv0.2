@@ -3,8 +3,6 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuInflater;
 
 public class Home extends AppCompatActivity {
 
@@ -33,11 +31,5 @@ public class Home extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_items, menu);
-        return true;
-    }
 
 }
