@@ -2,11 +2,14 @@ package com.example.hp.heartful;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +33,8 @@ import com.twitter.sdk.android.core.TwitterException;
 import com.twitter.sdk.android.core.TwitterSession;
 import com.twitter.sdk.android.core.identity.TwitterLoginButton;
 
+import static com.facebook.FacebookSdk.getApplicationContext;
+
 /**
  * Created by HP INDIA on 08-Apr-17.
  */
@@ -42,32 +47,29 @@ public class FragmentThree extends Fragment implements View.OnClickListener {
         private Button Sign_Up;
         private TextView login_Text;
     private FirebaseAuth firebaseAuth;
+    Intent intent;
       private ProgressDialog progressDialog;
+    @RequiresApi(api = Build.VERSION_CODES.CUPCAKE)
     @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
         CallbackManager callbackManager= CallbackManager.Factory.create();
         View view = inflater.inflate(R.layout.tab_three, container, false);
         firebaseAuth=FirebaseAuth.getInstance();
-//        if(firebaseAuth.getCurrentUser()!=null){
-//             directly start user profile activity
-//            startActivity(new Intent(getActivity(),userProfileActivity.class));
-//        }
         progressDialog=new ProgressDialog(getActivity());
         email_Id=(EditText)view.findViewById(R.id.email_id);
         password=(EditText)view.findViewById(R.id.password);
         User_Name=(EditText)view.findViewById(R.id.User_name);
-        Sign_Up=(Button)view.findViewById(R.id.sing_up);
+        Sign_Up=(Button)view.findViewById(R.id.sign_up);
         login_Text=(TextView)view.findViewById(R.id.login_text);
         Sign_Up.setOnClickListener(this);
         login_Text.setOnClickListener(this);
-    LoginButton loginButton = (LoginButton) view.findViewById(R.id.login_button);
+        LoginButton loginButton = (LoginButton) view.findViewById(R.id.login_button);
        loginButton.setBackgroundResource(R.drawable.fb_singup_button);
         loginButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_fb,0, 0, 0);
         loginButton.setPadding(70,5,5,10);
         loginButton.setReadPermissions("email");
         // If using in a fragment
         loginButton.setFragment(this);
-
         // Other app specific specialization
         // Callback registration
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
@@ -76,7 +78,6 @@ public class FragmentThree extends Fragment implements View.OnClickListener {
             //    Log.v("FragmentThree","ab kya hota hai "+loginResult);
                 // App code
             }
-
             @Override
             public void onCancel() {
                 // App code
@@ -100,9 +101,16 @@ public class FragmentThree extends Fragment implements View.OnClickListener {
             @Override
 
             public void failure(TwitterException exception) {
+
             }
         });
+        //if(firebaseAuth.getCurrentUser()!=null){
+//             directly start user profile activity
+          //  getActivity().finish();
+            //startActivity(new Intent(getActivity(),userProfileActivity.class));
+        //}
         return view;
+
     }
 
 
@@ -123,14 +131,22 @@ public class FragmentThree extends Fragment implements View.OnClickListener {
        registerUser();
    }
    if(view==login_Text){
-       //login user
-       Intent intent = new Intent(getActivity(), loginActivity.class);
-       startActivity(intent);
+   //    login user
+       login();
+
    }
     }
     private  void registerUser(){
         String email=email_Id.getText().toString().trim();
         String pass_word=password.getText().toString().trim();
+        String user_name=User_Name.getText().toString();
+        if(TextUtils.isEmpty(user_name)){
+            // email is empty
+            Toast.makeText(getActivity(),"please selsect a name",Toast.LENGTH_SHORT).show();
+            return;// to stop the function from executation.
+        }
+
+
         if(TextUtils.isEmpty(email)){
             // email is empty
             Toast.makeText(getActivity(),"please enter email",Toast.LENGTH_SHORT).show();
@@ -152,13 +168,22 @@ public class FragmentThree extends Fragment implements View.OnClickListener {
                         //show user profile
                         Toast.makeText(getActivity(),"Registerd successfully",Toast.LENGTH_SHORT).show();
                         progressDialog.dismiss();
-                        startActivity(new Intent(getActivity(),userProfileActivity.class));
+                      //  startActivity(new Intent(getActivity(),userProfileActivity.class));
+                           intent = new Intent(getApplicationContext(),userProfileActivity.class);
+                        intent.putExtra("EdiTtEXTvALUE", User_Name.getText().toString());
+                        startActivity(intent);
                     }else {
-                        Toast.makeText(getActivity(),"could not register,pls try again",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(),"could not register, pls try again",Toast.LENGTH_SHORT).show();
                         progressDialog.dismiss();
                     }
                     }
                 });
 
+    }
+
+    private void login(){
+        Log.v("Fragment","dekhate hai yeh chal rha hai ki nhi");
+        getActivity().finish();
+        startActivity(new Intent(getActivity(), loginActivity.class));
     }
 }

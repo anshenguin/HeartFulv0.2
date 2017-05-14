@@ -7,7 +7,7 @@
     <item>
         <bitmap
             android:gravity="center"
-            android:src="@drawable/ic_heart"/>
+            android:src="@drawable/ic_heartfullogonew"/>
     </item>
 
 </layer-list>
