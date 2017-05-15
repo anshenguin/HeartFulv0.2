@@ -29,18 +29,19 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         firebaseAuth=FirebaseAuth.getInstance();
-        if(firebaseAuth.getCurrentUser()!=null){
+     //   if(firebaseAuth.getCurrentUser()!=null){
             // directly start user profile activity
-            finish();
-            startActivity(new Intent(this,userProfileActivity.class));
-       }
+       //     finish();
+         //   startActivity(new Intent(this,userProfileActivity.class));
+       //}
         progressDialog=new ProgressDialog(this);
         email_Id=(EditText)findViewById(R.id.email_id);
         password=(EditText)findViewById(R.id.password);
         sign_In=(Button)findViewById(R.id.sign_In);
         sign_Up=(TextView)findViewById(R.id.sign_up);
         sign_In.setOnClickListener(this);
-        sign_Up.setOnClickListener(this);
+      //  sign_Up.setOnClickListener(this);
+
 
     }
     private void user_Login(){
@@ -57,22 +58,25 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
             return;
         }
         // here if everything ok the user will be register
-        progressDialog.setMessage("Registering User,please wait...");
+        progressDialog.setMessage("Signing,please wait...");
         progressDialog.show();
-        firebaseAuth.createUserWithEmailAndPassword(email,pass_word)
+        firebaseAuth.signInWithEmailAndPassword(email,pass_word)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                   progressDialog.dismiss();
                         if (task.isSuccessful()){
                             // start user profile activity
+                            progressDialog.dismiss();
                             finish();
                             startActivity(new Intent(getApplicationContext(),userProfileActivity.class));
+                        }
+                        else {
+                            Toast.makeText(loginActivity.this,"could not register, pls try again Error is"+ task.getException(),Toast.LENGTH_SHORT).show();
+                            progressDialog.dismiss();
                         }
                     }
                 });
     }
-
     @Override
     public void onClick(View view) {
         if (view==sign_In){
@@ -86,4 +90,5 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
         }
 
     }
+
 }

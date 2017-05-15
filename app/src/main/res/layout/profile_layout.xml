@@ -46,14 +46,10 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:elevation="4dp"
+                android:id="@+id/log_out"
                 android:background="@drawable/orangecustombuttom"
                  />
-
-
-
         </LinearLayout>
-
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -61,14 +57,12 @@
             android:textSize="24sp"
             android:textColor="#79319e"
             android:text="Recent Activity"/>
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="32dp"
             android:layout_marginBottom="8dp"
             android:text="-Started Following AASRA"/>
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

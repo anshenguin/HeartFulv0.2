@@ -33,6 +33,7 @@ import com.twitter.sdk.android.core.TwitterException;
 import com.twitter.sdk.android.core.TwitterSession;
 import com.twitter.sdk.android.core.identity.TwitterLoginButton;
 
+import static com.crashlytics.android.beta.Beta.TAG;
 import static com.facebook.FacebookSdk.getApplicationContext;
 
 /**
@@ -47,7 +48,7 @@ public class FragmentThree extends Fragment implements View.OnClickListener {
         private Button Sign_Up;
         private TextView login_Text;
     private FirebaseAuth firebaseAuth;
-    Intent intent;
+        Intent intent;
       private ProgressDialog progressDialog;
     @RequiresApi(api = Build.VERSION_CODES.CUPCAKE)
     @Override
@@ -55,6 +56,11 @@ public class FragmentThree extends Fragment implements View.OnClickListener {
         CallbackManager callbackManager= CallbackManager.Factory.create();
         View view = inflater.inflate(R.layout.tab_three, container, false);
         firebaseAuth=FirebaseAuth.getInstance();
+//        if(firebaseAuth.getCurrentUser()!=null){
+//             directly start user profile activity
+//          getActivity().finish();
+//        startActivity(new Intent(getActivity(),userProfileActivity.class));
+//        }
         progressDialog=new ProgressDialog(getActivity());
         email_Id=(EditText)view.findViewById(R.id.email_id);
         password=(EditText)view.findViewById(R.id.password);
@@ -104,11 +110,7 @@ public class FragmentThree extends Fragment implements View.OnClickListener {
 
             }
         });
-        //if(firebaseAuth.getCurrentUser()!=null){
-//             directly start user profile activity
-          //  getActivity().finish();
-            //startActivity(new Intent(getActivity(),userProfileActivity.class));
-        //}
+
         return view;
 
     }
@@ -136,6 +138,19 @@ public class FragmentThree extends Fragment implements View.OnClickListener {
 
    }
     }
+
+    private void login(){
+         Log.v("FragmentThree","dekhate hai yeh chal rha hai ki nhi");
+       try{
+        getActivity().finish();
+        startActivity(new Intent(getActivity(), loginActivity.class));
+    }catch (Exception e) {
+           Log.e(TAG,Log.getStackTraceString(e));
+       }
+
+    }
+
+
     private  void registerUser(){
         String email=email_Id.getText().toString().trim();
         String pass_word=password.getText().toString().trim();
@@ -150,7 +165,8 @@ public class FragmentThree extends Fragment implements View.OnClickListener {
         if(TextUtils.isEmpty(email)){
             // email is empty
             Toast.makeText(getActivity(),"please enter email",Toast.LENGTH_SHORT).show();
-            return;// to stop the function from executation.
+            return;
+            // to stop the function from executation.
         }
         if(TextUtils.isEmpty(pass_word)){
             // email is empty
@@ -168,22 +184,16 @@ public class FragmentThree extends Fragment implements View.OnClickListener {
                         //show user profile
                         Toast.makeText(getActivity(),"Registerd successfully",Toast.LENGTH_SHORT).show();
                         progressDialog.dismiss();
-                      //  startActivity(new Intent(getActivity(),userProfileActivity.class));
-                           intent = new Intent(getApplicationContext(),userProfileActivity.class);
+                        //  startActivity(new Intent(getActivity(),userProfileActivity.class));
+                        intent = new Intent(getApplicationContext(),userProfileActivity.class);
                         intent.putExtra("EdiTtEXTvALUE", User_Name.getText().toString());
                         startActivity(intent);
                     }else {
-                        Toast.makeText(getActivity(),"could not register, pls try again",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(),"could not register, pls try again Error is"+ task.getException(),Toast.LENGTH_SHORT).show();
                         progressDialog.dismiss();
                     }
                     }
                 });
 
     }
-
-    private void login(){
-        Log.v("Fragment","dekhate hai yeh chal rha hai ki nhi");
-        getActivity().finish();
-        startActivity(new Intent(getActivity(), loginActivity.class));
     }
-}
