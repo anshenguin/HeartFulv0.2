@@ -53,7 +53,7 @@ public class NewsPost extends AppCompatActivity {
         submitbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                progress.setMessage("Posting, please wait...");
+                progress.setMessage("News Posting, please wait...");
                 userPost();
                 progress.show();
 
