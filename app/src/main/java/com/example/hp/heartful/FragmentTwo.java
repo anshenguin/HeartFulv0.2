@@ -113,6 +113,7 @@ public class FragmentTwo extends Fragment {
             Glide
                     .with(applicationContext)
                     .load(image)
+                    .dontAnimate()
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .into(post_image);
 

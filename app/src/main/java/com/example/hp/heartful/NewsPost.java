@@ -29,14 +29,17 @@ public class NewsPost extends AppCompatActivity {
     private DatabaseReference mdatabase;
     private Uri imageUri=null;
     private ProgressDialog progress;
-    private StorageReference mstorage;
+    private StorageReference newsPhotos;
+    private FirebaseStorage mstorage;
     private final static int GALLERY_REQUEST=1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_post);
+     //   FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+        mstorage=FirebaseStorage.getInstance();
         mdatabase= FirebaseDatabase.getInstance().getReference().child("News");
-        mstorage= FirebaseStorage.getInstance().getReference();
+        newsPhotos=mstorage.getReference().child("NewsImages");
         submitbtn=(Button)findViewById(R.id.submit_button);
         title=(EditText)findViewById(R.id.title);
         userDesc=(EditText)findViewById(R.id.user_des);
@@ -46,8 +49,9 @@ public class NewsPost extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent gallery=new Intent(Intent.ACTION_GET_CONTENT);
-                gallery.setType("image/*");
-                startActivityForResult(gallery,GALLERY_REQUEST);
+                gallery.setType("image/jpeg");
+                gallery.putExtra(Intent.EXTRA_LOCAL_ONLY, true);
+                startActivityForResult(Intent.createChooser(gallery, "Complete action using"),GALLERY_REQUEST);
             }
         });
         submitbtn.setOnClickListener(new View.OnClickListener() {
@@ -55,7 +59,7 @@ public class NewsPost extends AppCompatActivity {
             public void onClick(View v) {
                 progress.setMessage("News Posting, please wait...");
                 userPost();
-                progress.show();
+
 
             }
         });
@@ -64,8 +68,9 @@ public class NewsPost extends AppCompatActivity {
         final String postTitle=title.getText().toString();
         final String postDes= userDesc.getText().toString();
         if (!TextUtils.isEmpty(postTitle)&&!TextUtils.isEmpty(postDes)&&imageUri!=null){
-            StorageReference filePath=mstorage.child("NewsImages").child(imageUri.getLastPathSegment());
-            filePath.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            progress.show();
+           StorageReference filePath=newsPhotos.child(imageUri.getLastPathSegment());
+            filePath.putFile(imageUri).addOnSuccessListener(this,new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     @SuppressWarnings("VisibleForTests")
@@ -73,11 +78,12 @@ public class NewsPost extends AppCompatActivity {
                     DatabaseReference newPost=mdatabase.push();
                     newPost.child("Title").setValue(postTitle);
                     newPost.child("Description").setValue(postDes);
-                    newPost.child("Image").setValue(downloadUrl.toString());
+                   newPost.child("Image").setValue(downloadUrl.toString());
                     progress.dismiss();
                     startActivity(new Intent(NewsPost.this,FragmentTwo.class));
                 }
             });
+
         }
         else{
             Toast.makeText(NewsPost.this,"Please fill all the blanks",Toast.LENGTH_LONG).show();
@@ -102,7 +108,9 @@ public class NewsPost extends AppCompatActivity {
                 userImage.setImageURI(imageUri);
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 Exception error = result.getError();
+                Toast.makeText(NewsPost.this, (CharSequence) error,Toast.LENGTH_LONG).show();
             }
         }
+
     }
 }
