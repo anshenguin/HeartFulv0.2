@@ -1,5 +1,6 @@
 package com.example.hp.heartful;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -7,6 +8,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -58,6 +60,13 @@ public  class FragmentOne extends Fragment  {
         // Make the {@link ListView} use the {@link WordAdapter} we created above, so that the
         // {@link ListView} will display list items for each {@link Word} in the list.
         listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent myIntent = new Intent(getActivity(), orgInsideActivity.class);
+                getActivity().startActivity(myIntent);
+            }
+        });
        final   EditText searchItem= (EditText)rootView. findViewById(R.id.search_item);
 
         // Capture Text in EditText

@@ -42,7 +42,11 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
         sign_In.setOnClickListener(this);
       //  sign_Up.setOnClickListener(this);
 
-
+    }
+    public void sign_up(){
+        // go to registeration page
+        finish();
+        startActivity(new Intent(loginActivity.this,FragmentThree.class));
     }
     private void user_Login(){
         String email=email_Id.getText().toString().trim();
@@ -83,12 +87,10 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
             // start user profile activity
             user_Login();
         }
-        if(view==sign_Up){
-            // go to registeration page
-            finish();
-            startActivity(new Intent(this,FragmentThree.class));
-        }
+
 
     }
+
+
 
 }

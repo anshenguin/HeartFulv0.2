@@ -1,202 +1,178 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:layout_width="match_parent">
 <ScrollView
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         >
+
     <LinearLayout
-        android:orientation="vertical" android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    <ImageView
         android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+    
+    <ImageView
+        android:layout_width="200dp"
         android:layout_height="200dp"
         android:src="@drawable/heart"
-        android:scaleType="centerInside"/>
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp"
+        />
 
+        <View
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_width="match_parent"
+            android:background="@color/tw__composer_deep_gray"
+            android:layout_height="0.5dp"
+            android:layout_marginBottom="16dp"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Heartful NGO"
+            android:textSize="18sp"
+            android:layout_marginBottom="16dp"
+            android:layout_gravity="center"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
-            android:paddingRight="8dp"
             android:orientation="vertical"
-            android:padding="8dp"
-
-            android:background="@color/colorPrimary">
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="AASRA"
-                android:layout_marginBottom="8dp"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="#fff"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#fff"
-                android:layout_marginBottom="16dp"
-                android:text="The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog."/>
-
-
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:weightSum="3"
-            android:background="#29b6f6"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="50dp"
-                android:layout_height="100dp"
-                android:layout_weight="1"
-                android:text="CONTACT"
-                android:textSize="24sp"
-                android:gravity="center"/>
-
-            <TextView
-                android:layout_width="50dp"
-                android:layout_height="100dp"
-                android:layout_weight="1"
-                android:text="VOLUNTEER"
-                android:textSize="24sp"
-                android:gravity="center"/>
-
-            <TextView
-                android:layout_width="50dp"
-                android:layout_height="100dp"
-                android:layout_weight="1"
-                android:text="DONATE"
-                android:textSize="24sp"
-                android:gravity="center"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_marginBottom="8dp">
+        <TextView
+            android:layout_width="280dp"
             android:layout_height="wrap_content"
-            android:background="#29b6f6"
-            android:orientation="vertical"
-            android:paddingRight="16dp"
-            android:paddingLeft="16dp">
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp"
+            android:gravity="center_horizontal"
+            android:text="This is a test NGO. The name is being extended for testing purposes. This sentence will make the words equal 24 somehow a a a."/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#263238"
-                android:layout_marginTop="16dp"
-                android:text="www.aasra.org"
-
-                android:textSize="24sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:layout_marginTop="16dp"
-                android:text="D-14, DOORDARSHAN COLONY, BHAGWANMAHAVIR MARG, JALANDAR, PUNJAB"
-                android:textColor="#263238"
-                android:textSize="16sp" />
-
-
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:text="READ MORE"
+                />
         </LinearLayout>
-        <LinearLayout
+
+        <View
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
-            android:orientation="vertical"
-            android:paddingRight="16dp"
-            android:background="#4dd0e1">
+            android:background="@color/tw__composer_deep_gray"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="16dp"
+            />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:weightSum="3"
+        android:orientation="horizontal"
+        >
 
-            <TextView
-                android:layout_marginTop="16dp"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:textColor="#000"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="VISION"/>
-
-            <View
-                android:layout_marginTop="4dp"
-                android:layout_width="56sp"
-                android:layout_height="2dp"
-                android:layout_gravity="center"
-                android:background="#000"
-                />
-
-            <View
-                android:layout_marginTop="4dp"
-                android:layout_width="48sp"
-                android:layout_height="2dp"
-                android:layout_gravity="center"
-                android:background="#000"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:textSize="16sp"
-                android:text="Our vision is to remove poverty by 2018 and to provide safer drinking water to everyone."/>
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="72dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginLeft="4dp"
+            android:text="CONTACT"
+            tools:ignore="HardcodedText" />
+        <TextView
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="72dp"
+            android:text="VOLUNTEER"/>
+        <TextView
+            android:gravity="center"
+            android:layout_marginRight="4dp"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="72dp"
+            android:text="DONATE"/>
 
 
-            <TextView
-                android:layout_marginTop="16dp"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:textColor="#000"
 
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="MISSION"/>
 
-            <View
-                android:layout_marginTop="4dp"
-                android:layout_width="56sp"
-                android:layout_height="2dp"
-                android:layout_gravity="center"
-                android:background="#000"
-                />
-
-            <View
-                android:layout_marginTop="4dp"
-                android:layout_width="48sp"
-                android:layout_height="2dp"
-                android:layout_gravity="center"
-                android:background="#000"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:textSize="16sp"
-                android:layout_marginBottom="72dp"
-                android:text="Our mission is to remove poverty by 2018 and to provide safer drinking water to everyone."/>
-        </LinearLayout>
     </LinearLayout>
 
+        <View
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_width="match_parent"
+            android:background="@color/tw__composer_deep_gray"
+            android:layout_height="0.5dp"
+            android:layout_marginBottom="16dp"
+
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
+            android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="MISSION"
+            android:layout_marginBottom="16dp"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_marginBottom="16dp"
+                android:gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                android:text="TEST AAA AAA XYXASDE EDTRGT tHIS This Abcde Hello World"
+                />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="MISSION"
+                android:layout_marginBottom="16dp"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                android:text="TEST AAA AAA XYXASDE EDTRGT tHIS This Abcde Hello World"
+                />
+
+
+        </LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="FOLLOW"
+            android:textSize="24sp"
+            android:textColor="#fff"
+            android:background="#6b7cff"
+            />
+    </LinearLayout>
+
+
+    
 </ScrollView>
 
-<Button
-android:layout_width="80dp"
-android:layout_height="40dp"
-android:background="@drawable/custom_button"
-android:layout_alignParentBottom="true"
-android:layout_alignParentRight="true"
-android:layout_margin="16dp"
-android:text="Follow" />
 
 
-</RelativeLayout>
+</LinearLayout>

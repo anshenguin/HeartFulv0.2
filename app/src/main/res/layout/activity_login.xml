@@ -71,6 +71,7 @@
             android:layout_marginLeft="9dp"
             android:layout_marginTop="16dp"
             android:layout_weight="0.5"
+            android:onClick="onClick"
             android:text="New User? Creat Account"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline"
             android:textColor="#0097A7"
