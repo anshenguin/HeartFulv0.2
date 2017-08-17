@@ -22,7 +22,7 @@ public class OrgInfoAdapter extends ArrayAdapter {
     private List<OrgInfo> searchLists = null;
     private ArrayList<OrgInfo> Organisations;
 
-    public OrgInfoAdapter(Context context, ArrayList<OrgInfo> worldpopulationlist) {
+    public OrgInfoAdapter(Context context,ArrayList<OrgInfo> worldpopulationlist) {
         super(context, 0, worldpopulationlist);
         mContext = context;
         this.searchLists = worldpopulationlist;

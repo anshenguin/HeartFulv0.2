@@ -3,7 +3,6 @@ package com.example.hp.heartful;
 /**
  * Created by HP INDIA on 10-Apr-17.
  */
-
 public class OrgInfo {
     /** Default translation for the word */
     private String mOrgname;

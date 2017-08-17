@@ -21,6 +21,9 @@ import com.google.firebase.storage.UploadTask;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
+import java.text.DateFormat;
+import java.util.Date;
+
 public class NewsPost extends AppCompatActivity {
 
     private ImageButton userImage;
@@ -31,6 +34,7 @@ public class NewsPost extends AppCompatActivity {
     private ProgressDialog progress;
     private StorageReference newsPhotos;
     private FirebaseStorage mstorage;
+    private   String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
     private final static int GALLERY_REQUEST=1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,7 +82,8 @@ public class NewsPost extends AppCompatActivity {
                     DatabaseReference newPost=mdatabase.push();
                     newPost.child("Title").setValue(postTitle);
                     newPost.child("Description").setValue(postDes);
-                   newPost.child("Image").setValue(downloadUrl.toString());
+                    newPost.child("DateAndTime").setValue(currentDateTimeString);
+                    newPost.child("Image").setValue(downloadUrl.toString());
                     progress.dismiss();
                     startActivity(new Intent(NewsPost.this,FragmentTwo.class));
                 }
@@ -98,12 +103,13 @@ public class NewsPost extends AppCompatActivity {
             imageUri=data.getData();
             CropImage.activity(imageUri)
                     .setGuidelines(CropImageView.Guidelines.ON)
+                    .setFixAspectRatio(true)
                     .start(this);
         }
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             if (resultCode == RESULT_OK) {
-                Uri resultUri = result.getUri();
+                 Uri resultUri = result.getUri();
                 imageUri=resultUri;
                 userImage.setImageURI(imageUri);
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {

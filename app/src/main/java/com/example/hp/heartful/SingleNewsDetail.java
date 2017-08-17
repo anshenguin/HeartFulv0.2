@@ -38,6 +38,7 @@ public class SingleNewsDetail extends AppCompatActivity {
                 Glide
                         .with(SingleNewsDetail.this)
                         .load(post_image)
+                      .override(450,450)
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .into(mNewsImage);
 

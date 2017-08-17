@@ -1,6 +1,5 @@
 package com.example.hp.heartful;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -33,12 +32,13 @@ public class FragmentTwo extends Fragment {
   ImageButton button;
     private RecyclerView mNewsLists;
     private DatabaseReference mDatabase;
-    private ProgressDialog progressDialog;
+//    private ProgressDialog progressDialog;
     FirebaseAuth firebaseAuth;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view =inflater.inflate(R.layout.tab_two, container, false);
+      final   View view =inflater.inflate(R.layout.tab_two, container, false);
+        super.onCreate(savedInstanceState);
         button=(ImageButton) view.findViewById(R.id.button);
         firebaseAuth=FirebaseAuth.getInstance();
         button.setOnClickListener(new View.OnClickListener() {
@@ -62,7 +62,7 @@ public class FragmentTwo extends Fragment {
         //mNewsLists.setHasFixedSize(true);
         mNewsLists.setItemViewCacheSize(20);
         mNewsLists.setDrawingCacheEnabled(true);
-        mNewsLists.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
+        mNewsLists.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_AUTO);
         mNewsLists.setLayoutManager(linearLayoutManager);
 
         FirebaseRecyclerAdapter<News,NewsViewHolder> firebaseRecyclerAdapter= new FirebaseRecyclerAdapter<News, NewsViewHolder>(News.class,
@@ -72,13 +72,14 @@ public class FragmentTwo extends Fragment {
             @Override
             protected void populateViewHolder(NewsViewHolder viewHolder, News model, int position) {
                 final String post_key=getRef(position).getKey();
+                viewHolder.setDateAndTime(model.getDateAndTime());
                 viewHolder.setTitle(model.getTitle());
                 viewHolder.setDesc(model.getDescription());
                 viewHolder.setImage(getActivity().getApplicationContext(),model.getImage());
                 viewHolder.mView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-              Intent intent=new Intent(getActivity(),SingleNewsDetail.class);
+                Intent intent=new Intent(getActivity(),SingleNewsDetail.class);
                         intent.putExtra("news_id",post_key);
                         startActivity(intent);
                     }
@@ -107,7 +108,10 @@ public class FragmentTwo extends Fragment {
             TextView post_title=(TextView)mView.findViewById(R.id.news_description);
             post_title.setText(desc);
         }
-
+        public void setDateAndTime(String desc) {
+            TextView post_time=(TextView)mView.findViewById(R.id.date_time);
+            post_time.setText(desc);
+        }
         public void setImage(Context applicationContext, String image) {
             final ImageView post_image=(ImageView)mView.findViewById(R.id.news_images);
             Glide

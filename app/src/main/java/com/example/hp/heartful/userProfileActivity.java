@@ -1,5 +1,6 @@
 package com.example.hp.heartful;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -13,21 +14,19 @@ public class userProfileActivity extends AppCompatActivity implements View.OnCli
     TextView user_name;
     private ImageButton log_out;
     CallbackManager callbackManager;
-    FirebaseAuth firebaseAuth;
+    FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        if(AccessToken.getCurrentAccessToken()==null){
-//            startActivity(new Intent(userProfileActivity.this,loginActivity.class));
-//        }
+        mAuth=FirebaseAuth.getInstance();
+        if(mAuth.getCurrentUser()==null){
+            finish();
+            startActivity(new Intent(userProfileActivity.this,loginActivity.class));
+        }
         setContentView(R.layout.profile_layout);
 //        user_name=(TextView)findViewById(R.id.User_name);
 //        user_name.setText(getIntent().getStringExtra("EdiTtEXTvALUE"));
-//        firebaseAuth=FirebaseAuth.getInstance();
-//        if(firebaseAuth.getCurrentUser()==null){
-//            finish();
-//            startActivity(new Intent(userProfileActivity.this,loginActivity.class));
-//        }
+
 //       log_out=(ImageButton)findViewById(R.id.log_out);
 //        log_out.setOnClickListener(this);
 
@@ -36,8 +35,8 @@ public class userProfileActivity extends AppCompatActivity implements View.OnCli
 
     @Override
     public void onClick(View view) {
-if (view==log_out){
-    firebaseAuth.signOut();
+     if (view==log_out){
+    mAuth.signOut();
 }
     }
 }
