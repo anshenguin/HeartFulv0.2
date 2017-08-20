@@ -5,25 +5,14 @@ package com.example.hp.heartful;
  */
 
 public class News {
-    private String Title,Description,Image,DateAndTime;
-
+    private String Title,Description,Image;
     public  News(){
     }
-
-
-    public News(String title, String description, String image, String dateAndTime) {
+    public News(String title, String description, String image) {
         this.Title = title;
-        this.DateAndTime=dateAndTime;
         this.Description = description;
         this.Image = image;
 
-    }
-    public String getDateAndTime() {
-        return DateAndTime;
-    }
-
-    public void setDateAndTime(String dateAndTime) {
-        DateAndTime = dateAndTime;
     }
 
     public String getTitle() {

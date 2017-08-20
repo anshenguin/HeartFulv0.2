@@ -37,7 +37,13 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.twitter.sdk.android.core.Callback;
+import com.twitter.sdk.android.core.Result;
+import com.twitter.sdk.android.core.TwitterException;
+import com.twitter.sdk.android.core.TwitterSession;
+import com.twitter.sdk.android.core.identity.TwitterLoginButton;
 
+import static com.crashlytics.android.beta.Beta.TAG;
 import static com.facebook.FacebookSdk.getApplicationContext;
 
 /**
@@ -56,20 +62,25 @@ public class FragmentThree extends Fragment implements View.OnClickListener {
         private TextView login_Text;
         private FirebaseAuth.AuthStateListener mAuthStateListener;
         private ProgressDialog progress;
-        private static String TAG="FragmentThree";
+        private FirebaseAuth firebaseAuth;
         private LoginButton mFbLogin;
         CallbackManager callbackManager;
+        private TwitterLoginButton twitterloginButton;
         Intent intent;
         private ProgressDialog progressDialog;
-
     @RequiresApi(api = Build.VERSION_CODES.CUPCAKE)
     @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
 
-       final View view = inflater.inflate(R.layout.tab_three, container, false);
-        super.onCreate(savedInstanceState);
+        View view = inflater.inflate(R.layout.tab_three, container, false);
+        firebaseAuth=FirebaseAuth.getInstance();
         FacebookSdk.sdkInitialize(getActivity().getApplicationContext());
         callbackManager= CallbackManager.Factory.create();
+//        if(firebaseAuth.getCurrentUser()!=null){
+//             directly start user profile activity
+//          getActivity().finish();
+//        startActivity(new Intent(getActivity(),userProfileActivity.class));
+//        }
         progressDialog=new ProgressDialog(getActivity());
         progress=new ProgressDialog(getActivity());
         email_Id=(EditText)view.findViewById(R.id.email_id);
@@ -82,28 +93,26 @@ public class FragmentThree extends Fragment implements View.OnClickListener {
         login_Text.setOnClickListener(this);
         mFbLogin=(LoginButton)view.findViewById(R.id.fb_login);
         mAuth=FirebaseAuth.getInstance();
-        if(mAuth.getCurrentUser()!=null){
-            userProfile();
-        }
-  else {}
-
-        mAuthStateListener= new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-//                if(mAuth.getCurrentUser()!=null){
-//
-//                    userProfile();
+//        mAuthStateListener= new FirebaseAuth.AuthStateListener() {
+//            @Override
+//            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+//                if (firebaseAuth.getCurrentUser()!=null){
+//                getActivity().finish();
+//                    startActivity(new Intent(getActivity(),userProfileActivity.class));
 //                }
-
-            }
-        };
-//        mFbLogin.setFragment(this);
+//            }
+//        };
+        mFbLogin.setFragment(this);
         mFbLogin.setReadPermissions("public_profile", "email", "user_friends");
         mFbLogin.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
              public void onSuccess(LoginResult loginResult) {
                 // App code
                  userProfile();
+//
+//                Intent intent=new Intent(getActivity(),userProfileActivity.class);
+//                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                startActivity(intent);
 
             }
 
@@ -123,21 +132,15 @@ public class FragmentThree extends Fragment implements View.OnClickListener {
                 .requestEmail()
                 .build();
         mgoogleSign=(SignInButton)view.findViewById(R.id.google_login);
-        if(mGoogleApiClient == null || !mGoogleApiClient.isConnected()){
-            try {
         mGoogleApiClient=new GoogleApiClient.Builder(getApplicationContext())
                 .enableAutoManage(getActivity(), new GoogleApiClient.OnConnectionFailedListener() {
                     @Override
                     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-                        Toast.makeText(getActivity(),"You get an error",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(),"You get get error",Toast.LENGTH_SHORT).show();
                     }
                 })
                 .addApi(Auth.GOOGLE_SIGN_IN_API,gso)
-                 .build();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
+                .build();
         mgoogleSign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -145,17 +148,29 @@ public class FragmentThree extends Fragment implements View.OnClickListener {
                 signIn();
             }
         });
+        twitterloginButton = (TwitterLoginButton)view. findViewById(R.id.twitter_login);
+        twitterloginButton.setCallback(new Callback<TwitterSession>() {
+            @Override
+            public void success(Result<TwitterSession> result) {
+                userProfile();
+            }
+            @Override
+
+            public void failure(TwitterException exception) {
+
+            }
+        });
+
+
 
         return view;
 
     }
-
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        mAuth.addAuthStateListener(mAuthStateListener);
-    }
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//        mAuth.addAuthStateListener(mAuthStateListener);
+//    }
 
     private void signIn() {
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
@@ -171,6 +186,7 @@ public class FragmentThree extends Fragment implements View.OnClickListener {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        twitterloginButton.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
         if (requestCode == RC_SIGN_IN) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
@@ -210,6 +226,7 @@ public class FragmentThree extends Fragment implements View.OnClickListener {
     private void login(){
 
        try{
+        getActivity().finish();
         startActivity(new Intent(getActivity(), loginActivity.class));
     }catch (Exception e) {
            Log.e(TAG,Log.getStackTraceString(e));
@@ -225,7 +242,7 @@ public class FragmentThree extends Fragment implements View.OnClickListener {
         String user_name=User_Name.getText().toString();
         if(TextUtils.isEmpty(user_name)){
             // email is empty
-            Toast.makeText(getActivity(),"please select a name",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(),"please selsect a name",Toast.LENGTH_SHORT).show();
             return;// to stop the function from executation.
         }
 
@@ -244,7 +261,7 @@ public class FragmentThree extends Fragment implements View.OnClickListener {
         // here if everything ok the user will be register
         progressDialog.setMessage("Registering User,please wait...");
         progressDialog.show();
-        mAuth.createUserWithEmailAndPassword(email,pass_word)
+        firebaseAuth.createUserWithEmailAndPassword(email,pass_word)
                 .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>(){
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
